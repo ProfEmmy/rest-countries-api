@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="assets\favicon-32x32.png">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="script.js" defer></script>
+
+    <title>Frontend Mentor Challange - Rest Countries API</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="where-to-div">
+                <h2>Where in the world?</h2>
+            </div>
+            <div class="theme-changer-div">
+                <img src="assets\moon-regular.svg" alt="moon-icon" class="moon-icon">
+                <p class="dark-mode-txt">Dark Mode</p>
+            </div>
+        </nav>
+    </header>
+    <section class="filter-section">
+        <div class="filters-div">
+            <form class="filter-form">
+                <input type="text" placeholder="Search for country..." class="filter-input-field">
+                <button type="submit" class="search-btn">
+                    <img src="assets\magnifying-glass-solid.svg" alt="search" class="search-btn-icon">
+                </button>
+            </form>
+
+            <div class="filters">
+                <div class="filter-dropdown-div">
+                    <div class="filter-dropdown">
+                        <p class="filter">Filter by Region</p>
+                        <img src="assets\caret-down-solid.svg" alt="dropdown-icon" class="dropdown-icon">
+                    </div>
+                </div>
+                <div class="filters-dropdown-div dropdown-div-display">
+                    <div class="filters-dropdown dropdown-display">
+                        <p id="All">All</p>
+                        <p id="Africa">Africa</p>
+                        <p id="Americas">Americas</p>
+                        <p id="Asia">Asia</p>
+                        <p id="Europe">Europe</p>
+                        <p id="Oceania">Oceania</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <main>
+        <div class="countries">
+        </div>
+    </main>
+
+    <template class="country-temp">
+        <div class="country">
+            <img src="" alt="flag" class="country-flag">
+            <h2 class="country-name"></h2>
+            <p class="population"><b>Population:</b> <span class="thepopulation"></span></p>
+            <p class="region"><b>Region:</b> <span class="theregion"></span></p>
+            <p class="capital"><b>Capital:</b> <span class="thecapital"></span></p>
+        </div>
+    </template>
+
+    <template class="country-info-temp">
+        <div class="country-info-div">
+            <button class="back-btn">
+                <img src="assets\arrow-left-long-solid.svg" alt="left-arrow" class="left-arrow">
+                Back
+            </button>
+            <div class="country-info">
+                <img src="" alt="flag" class="country-info-flag">
+                <div class="country-details-div">
+                    <div class="conutry-details-innerdiv">
+                        <h2 class="country-common-name"></h2>
+                        <div class="country-details">
+                            <div class="row row1">
+                                <p>Native Name: <span class="native-name"></span></p>
+                                <p>Population: <span class="population-detail"></span></p>
+                                <p>Region: <span class="region-detail"></span></p>
+                                <p>Sub Region: <span class="sub-region"></span></p>
+                                <p>Capital: <span class="capital-detail"></span></p>
+                            </div>
+                            <div class="row row2">
+                                <p>Top Level Domain: <span class="top-domain"></span></p>
+                                <p>Currencies: <span class="currencies"></span></p>
+                                <p>Languages: <span class="languages"></span></p>
+                            </div>
+                        </div>
+                        <div class="border-countries-div">
+                            <p class="border-countries">Border Countries: </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</body>
+
+</html>
