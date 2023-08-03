@@ -244,17 +244,13 @@ async function getAllCountries(url) {
             const country_name_ = country.querySelector(".country-name").innerText
 
             if (!country_name_.startsWith(input.value)) {
-                // console.log(country)
                 country.classList.add("display")
             }
 
             if (country_name_.startsWith(input.value)) {
+                console.log(country)
                 country.classList.remove("display")
             }
-
-            // if (input.value == "") {
-            //     country.classList.remove("display")
-            // }
         })
     })
 }
