@@ -181,6 +181,7 @@ function toggleDarkMode() {
     const border_countriesP = document.querySelector(".border-countries")
     const back_btn = document.querySelector(".back-btn")
     const left_arrow = document.querySelector(".left-arrow")
+    const search_btn = document.querySelector(".search-btn")
 
     document.querySelector("body").classList.toggle("dark-background1")
     filter_input_field.classList.toggle("dark-background2")
@@ -188,6 +189,7 @@ function toggleDarkMode() {
     filters_dropdown_div.classList.toggle("dark-background2")
         ;[...countries].forEach(country => country.classList.toggle("dark-background2"))
     header.classList.toggle("dark-background2")
+    search_btn.classList.toggle("dark-background1")
     moon_icon.classList.toggle("white-icon")
     dropdown_icon.classList.toggle("white-icon")
     border_countriesP.classList.toggle("dark-border-countries")

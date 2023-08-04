@@ -124,7 +124,7 @@ nav {
 }
 
 .search-btn {
-    background-color: none;
+    background-color: #ffffff;
     border: 0;
 }
 
@@ -243,6 +243,7 @@ main {
 .country-info-flag {
     width: 500px;
     height: 430px;
+    box-shadow: 0 0 5px hsl(0, 0%, 40%);
 }
 
 .country-details-div {
@@ -407,8 +408,12 @@ main {
         margin-bottom: -5%;
     }
 
+    .filter-dropdown-div:hover {
+        font-weight: normal;
+    }
+
     .filters-dropdown-div {
-        width: 42.5%;
+        width: 51%;
         margin-top: 5%;
     }
 
