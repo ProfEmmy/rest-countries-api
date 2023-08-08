@@ -47,12 +47,9 @@ getAllCountries(URL)
 all_countries_filter.addEventListener("click", () => { getAllCountries(URL) })
 
 filter_dropdown_div.addEventListener("click", () => {
-    console.log("Click")
     filters_dropdown_div.classList.toggle("dropdown-div-display")
     filters_dropdown.classList.toggle("dropdown-display")
-    console.log("After Click")
 })
-
 
 function addCountries(temp, data) {
     const flag = temp.querySelector(".country-flag")
@@ -138,37 +135,54 @@ function addDetails(temp, d) {
     }
 }
 
+function getCountryData(data) {
+    data.forEach(d => {
+        const country_info_temp = document.querySelector(".country-info-temp")
+        const temp_clone = country_info_temp.content.cloneNode(true)
+
+        addDetails(temp_clone, d)
+
+        main.appendChild(temp_clone)
+
+        const back = document.querySelector(".back-btn")
+
+        back.addEventListener("click", () => {
+            const country_info_div = document.querySelector(".country-info-div")
+
+            main.removeChild(country_info_div)
+
+            filter_section.classList.remove("display")
+            countries_div.classList.remove("display")
+        })
+    })
+}
+
+function getInfoWithCapital(api_link) {
+    fetch(api_link)
+        .then(response => response.json())
+        .then(data => {
+            getCountryData(data)
+        })
+}
+
 function getCountryInfo(country) {
     const the_country_name = country.querySelector(".country-name")
+    const thecapital = country.querySelector(".thecapital")
 
     filter_section.classList.add("display")
     countries_div.classList.add("display")
 
-    const country_api = `https://restcountries.com/v3.1/name/${the_country_name.innerText}/`
+    const country_data = `https://restcountries.com/v3.1/name/${the_country_name.innerText}/`
+    const data_with_capital = `https://restcountries.com/v3.1/capital/${thecapital.innerText}`
 
-    fetch(country_api)
+    fetch(country_data)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            data.forEach(d => {
-                const country_info_temp = document.querySelector(".country-info-temp")
-                const temp_clone = country_info_temp.content.cloneNode(true)
-
-                addDetails(temp_clone, d)
-
-                main.appendChild(temp_clone)
-
-                const back = document.querySelector(".back-btn")
-
-                back.addEventListener("click", () => {
-                    const country_info_div = document.querySelector(".country-info-div")
-
-                    main.removeChild(country_info_div)
-
-                    filter_section.classList.remove("display")
-                    countries_div.classList.remove("display")
-                })
-            })
+            if (data.length == 1) {
+                getCountryData(data)
+            } else {
+                getInfoWithCapital(data_with_capital)
+            }
         })
 }
 
@@ -215,8 +229,6 @@ async function getAllCountries(url) {
 
     Array.from(countries).forEach(country => {
         country.addEventListener("click", e => {
-            console.log("Clicked")
-
             getCountryInfo(country)
         })
 
@@ -245,21 +257,21 @@ async function getAllCountries(url) {
         ;[...countries].forEach(country => {
             const country_name_ = country.querySelector(".country-name").innerText
 
-            if (!country_name_.startsWith(input.value)) {
+            const seperated_input_values = input.value.split(" ")
+
+            for (var i = 0; i < seperated_input_values.length; i++) {
+                seperated_input_values[i] = seperated_input_values[i].charAt(0).toUpperCase() + seperated_input_values[i].slice(1);
+            }
+
+            const edited_value = seperated_input_values.join(" ")
+
+            if (!country_name_.startsWith(edited_value)) {
                 country.classList.add("display")
             }
 
-            if (country_name_.startsWith(input.value)) {
-                console.log(country)
+            if (country_name_.startsWith(edited_value)) {
                 country.classList.remove("display")
             }
         })
     })
 }
-
-
-
-
-
-
-
