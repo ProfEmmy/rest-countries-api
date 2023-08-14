@@ -41,6 +41,9 @@ getAllCountries(URL)
             moon_icon.addEventListener("click", () => {
                 toggleDarkMode()
             })
+
+            filters_dropdown_div.classList.add("dropdown-div-display")
+            filters_dropdown.classList.add("dropdown-display")
         })
     })
 
